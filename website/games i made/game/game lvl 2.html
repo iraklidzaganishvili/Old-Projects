@@ -1,0 +1,261 @@
+<html>
+<head>
+</head>
+<body>
+    <div id="sun">
+        <div id="dot"></div>
+       </div>
+    <p>time left</p><p id="tleft"></p><p>/24</p>
+    <div id="spawn"></div>
+    <div id="wall1" class="wall"></div>
+    <div id="circle" style="left:10px; top:70px"></div>
+    <div id="wall2" class="wall"></div>
+    <div id="wall3" class="wall"></div>
+    <div id="wall4" class="wall"></div>
+    <div id="wall5" class="wall"></div>
+    <div id="wall6" class="wall"></div>
+    <div id="wall7" class="wall"></div>
+    <div id="wall8" class="wall"></div>
+    <div id="wall9" class="wall"></div>
+    <div id="wall10" class="wall"></div>
+    <button onclick="respawn(); count=0">reset time</button>
+    <div id="end"></div>
+    </div>
+    <style>
+        *{
+            margin:0px;
+            position: fixed;
+        }
+        body{
+            background-image: url("bg.jpg");
+            background-size:1500px;
+        }
+        p{
+            position:static;
+            display:inline-block;
+        }
+        .wall{
+            background-color:red;
+            position: fixed;
+            background-image: url("wall.jpg");
+            background-size:32px;
+            background-repeat: repeat;
+        }
+        #spawn{
+            background-color:yellow;
+            height:30px;
+            width:30px;
+            left:10px; 
+            top:70px;
+            border-radius:20%;
+            background-size:100%;
+            background-image: url("zholti_kub.jpg");
+        }
+        #wall1{
+            width:100%;
+            height:100px;
+            top:-100px;
+        }
+        #wall2{
+            width:100px;
+            height:100%;
+            left:-100px;
+        }
+        #wall3{
+            bottom:-100px;
+            width:100%;
+            height:100px;
+        }
+        #wall4{
+            width:100px;
+            height:100%;
+            left:1370px;
+        }
+        #wall5{
+            width:1329px;
+            height:99px;
+            top:150px;
+        }
+        #wall6{
+            width:200px;
+            height:100px;
+            top:200px;
+        }
+        #wall7{
+            width:1200px;
+            height:30px;
+            top:290px;
+            left:241px;
+        }
+        #wall8{
+            width:1200px;
+            height:30px;
+            top:360px;
+            left:0px;
+        }
+        #wall9{
+            width:1320px;
+            height:1000px;
+            top:390px;
+            left:0px;
+        }
+        #wall10{
+            width:30px;
+            height:60px;
+            top:290px;
+            left:1250px;
+        }
+        #circle{
+            height:30px;
+            width:30px;
+            background-color:rgb(1, 167, 89);
+            top:0px;
+            border-radius:20%;
+            background-image: url("guy.jpg");
+            background-size:100%;
+        }
+        #end{
+            background-color:black;
+            height:30px;
+            width:30px;
+            left:1330px; 
+            top:550px;
+            border-radius:20%;
+            background-image: url("chorni_kub.jpg");
+            background-size:100%;
+        }
+
+    #dot{
+    position:absolute;
+    top:0;
+    left:0;
+    width:90px;
+    height:90px;
+    background:blue;
+    background-size:100%;
+    background-image: url("ledishka.jpg");
+    border-radius:10%;
+}
+#sun{
+    width:200px;
+    height:200px;
+    position:absolute;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-name:orbit;
+    -webkit-animation-duration:5s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+    -moz-animation-name:orbit;
+    -moz-animation-duration:5s;
+    top:70px;
+    left:50px;
+}
+
+@-webkit-keyframes orbit { 
+from { -webkit-transform:rotate(0deg) } 
+to { -webkit-transform:rotate(360deg) } 
+}
+@-moz-keyframes orbit { 
+from { -moz-transform:rotate(0deg) } 
+to { -moz-transform:rotate(360deg) } 
+}
+    </style> 
+    <script>
+        alert("Be aware of 'time left' at the top of your screen");
+        alert("Обратите внимание на 'оставшееся время' вверху экрана");
+    var count = 0;
+     window.setInterval(
+     function time() {
+        count = count + 1;
+        document.getElementById("tleft").innerHTML = count;
+        if(count==24){
+            respawn();
+            count=0;
+        }
+     }, 1000);
+        var score = 0;
+
+        function checkCollision(elm1, elm2) {
+        var elm1Rect = elm1.getBoundingClientRect();
+        var elm2Rect = elm2.getBoundingClientRect();
+
+        return (elm1Rect.right >= elm2Rect.left &&
+            elm1Rect.left <= elm2Rect.right) &&
+            (elm1Rect.bottom >= elm2Rect.top &&
+            elm1Rect.top <= elm2Rect.bottom);
+        }
+
+        function move(evt) {
+        var key;
+
+        var circle = document.getElementById('circle');
+        var scoreDiv = document.getElementById('score');
+
+        var x = parseInt(circle.style.left);
+        var y = parseInt(circle.style.top);
+
+        switch (evt.keyCode) {
+            case 37:
+            circle.style.left = `${x+-15}px`;
+            break;
+            case 39:
+            circle.style.left = `${x+15}px`;
+            break;
+            case 38:
+            circle.style.top = `${y+-15}px`;
+            break;
+            case 40:
+            circle.style.top = `${y+15}px`;
+            break;
+        }
+
+
+        setTimeout(function() {
+            if (checkCollision(wall1, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall2, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall3, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall4, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall5, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall6, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall7, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall8, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall9, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall10, circle)) {
+                respawn();
+            }
+            if (checkCollision(dot, circle)) {
+                respawn();
+            }
+            if (checkCollision(end, circle)) {
+                location.href = "game lvl 3.html";
+            }
+        }, 150);
+        }
+        function respawn(){
+            circle.style.top = "70px";
+            circle.style.left = "10px";
+        }
+
+        window.addEventListener('keydown', move);
+    </script>    
+</body>
+</html>

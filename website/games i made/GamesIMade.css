@@ -1,0 +1,61 @@
+/* Note from new me about old me: This code is a war crime */
+#alert{
+    position: relative;
+    text-align: center;
+    margin-top: 6vh;
+    color: green;
+}
+#alert-info{
+    position: relative;
+    text-align: center;
+    margin: 1vh;
+    font-size: 1.7em;
+    font-weight:650;
+    color: #005200;
+}
+.img{
+    position: absolute;
+    top:0px;
+    width:40vw;
+}
+.text{
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+    color: #005200;
+    font-size: 7vw;
+    top:50%;
+    transform: translate(0, -50%);
+    font-weight:610;
+    width: 100%;
+    text-align: center;
+    /* background-color: #6e6e6e;
+    border-radius: 30%; */
+}
+.shadow{
+    position: absolute;
+    top:0px;
+    z-index: 1;
+    width:40vw;
+    height:22.5vw;
+}
+.divbody{
+    margin:3vw;
+    position: relative;
+    width:40vw;
+    height:22.5vw;
+}
+#flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.shadow:hover .text{
+    opacity: 1;
+}
+.shadow:hover{
+    cursor:pointer;
+    transition: all 0.5s;
+    background-color: rgb(0, 0, 0, 0.7);
+}

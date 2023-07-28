@@ -1,0 +1,18 @@
+.img{
+    width: 300px;
+    float: left;
+}
+.writings-title{
+    width:100%;
+}
+.writings-title-name{
+    position: relative;
+    margin:0px;
+    top:0%;
+}
+#p1{
+    margin-top: 5vh;
+}
+img:hover{
+    width: 900px;
+}

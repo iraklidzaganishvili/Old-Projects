@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="GamesIMade.js"></script>
+    <link rel="stylesheet" href="GamesIMade.css">
+    <link rel="stylesheet" href="..\header.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="row" id="maindiv">
+        <div class="col headerdiv btn btn-primary" onclick="window.location.href = '../about me/AboutMe.html';">About me
+        </div>
+        <div class="col headerdiv btn btn-primary"
+            style="background-color:rgb(68, 68, 68); border-color:rgb(68, 68, 68);"
+            onclick="window.location.href = '../games i made/GamesIMade.html';">Games I made</div>
+        <div class="col headerdiv btn btn-primary" onclick="window.location.href = '../writings/Writings.html';">
+            Writings</div>
+    </div>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Alert:</strong> These are some of my older projects and were made to learn a certain part of coding not
+        to be played by others.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- <div class="WarningText">
+        <p id="alert">Alert: </p>
+        <p id="alert-info">These are some of my older projects and were made to learn a certain part of coding not to be played by others.</p>
+    </div> -->
+    <div id="flex">
+        <div id="div1body" class="divbody">
+            <div id="div1" class="shadow" onclick="window.location='game/index.html'">
+                <p class="text">Click Here</p>
+            </div>
+            <img src="game1.png" class="img" id="img1" />
+        </div>
+        <div id="div2body" class="divbody">
+            <div id="div2" class="shadow" onclick="window.location='ftb.html'">
+                <p class="text">Click Here</p>
+            </div>
+            <img src="game2.png" class="img" id="img2" />
+        </div>
+        <div id="div3body" class="divbody">
+            <div id="div3" class="shadow" onclick="window.location='MAL'">
+                <p class="text">Click Here</p>
+            </div>
+            <img src="game3.png" class="img" id="img3" />
+        </div>
+    </div>
+</body>
+
+</html>

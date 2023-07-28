@@ -1,0 +1,334 @@
+<html>
+<head>
+    <script>
+        var $hubbe = {};
+        $hubbe.printelement = function() {
+            $hubbe.div = document.createElement("DIV");
+         
+            $hubbe.div.setAttribute("id", "newdiv");
+            $hubbe.div.setAttribute("style", "background-color:blue;")
+            $hubbe.div.innerHTML = "";
+            $hubbe.div.style.position = "absolute";
+            $hubbe.div.style.left = "1000px";
+            $hubbe.div.style.top = "20px";
+            
+            document.body.appendChild($hubbe.div);
+            $hubbe.move();
+        }
+
+        $hubbe.movex = 0;
+        $hubbe.newdiv = document.getElementById("newdiv");
+        $hubbe.translateX = 1;
+        $hubbe.translateY = 0;
+				$hubbe.move = function() {
+        				var element = $hubbe.div;
+                var translateX = $hubbe.translateX;
+                var translateY = $hubbe.translateY;
+        				var pos = element.getBoundingClientRect();
+        				var domRect = document.body.getBoundingClientRect();
+								
+                if(pos.right >= domRect.right)
+                	$hubbe.translateX = -5;
+                
+                if(pos.left <= domRect.left)
+                	$hubbe.translateX = 5;
+          			$hubbe.div.style.left = pos.left + translateX + 'px';
+                $hubbe.div.style.top = pos.top + translateY + 'px';
+                setTimeout($hubbe.move, 1);
+        } 
+    </script>
+</head>
+<body  onload="$hubbe.printelement()">
+    <div id="sun">
+        <div id="dot"></div>
+       </div>
+    <div id="spawn"></div>
+    <div id="btn"></div>
+    <div id="wall1" class="wall"></div>
+    <div id="circle" style="left:10px; top:70px"></div>
+    <div id="wall2" class="wall"></div>
+    <div id="wall3" class="wall"></div>
+    <div id="wall4" class="wall"></div>
+    <div id="wall5" class="wall"></div>
+    <div id="wall6" class="wall"></div>
+    <div id="wall7" class="wall"></div>
+    <div id="wall8" class="wall"></div>
+    <div id="wall9" class="wall"></div>
+    <div id="wall10" class="wall"></div>
+    <div id="wall11" class="wall"></div>
+    <div id="wall12" class="wall"></div>
+    <div id="wall13" class="wall"></div>
+    <div id="wall14" class="wall"></div>
+    <div id="wall15" class="wall"></div>
+    <div id="end"></div>
+    </div>
+    <style>
+        :not(#newdiv){
+            margin:0px;
+        }
+        img{
+            width:0px;
+        }
+        #time{
+            position:fixed;
+            top:30px;
+            left:1250px;
+        }
+        #timeleft{
+            position:fixed;
+            top:50px;
+            left:1250px; 
+        }
+        #newdiv{
+            width:130px;
+            height:130px;
+            top:0px;
+            left:100px;
+            border-radius:10%;
+            background-image: url("vertikalnaia_ledishka.jpg");
+            background-size:100%;
+        }
+        p{
+            position:static;
+            display:inline-block;
+        }
+        body{
+            background-image: url("bg.jpg");
+            background-size:1500px;
+        }
+        .wall{
+            background-color:red;
+            position: fixed;
+            background-image: url("wall.jpg");
+            background-size:32px;
+            background-repeat: repeat;
+        }
+        #spawn{
+            position: fixed;
+            background-color:yellow;
+            height:30px;
+            width:30px;
+            left:10px; 
+            top:70px;
+            border-radius:20%;
+            background-size:100%;
+            background-image: url("zholti_kub.jpg");
+        }
+        #wall1{
+            width:100%;
+            height:100px;
+            top:-80px;
+        }
+        #wall2{
+            width:100px;
+            height:100%;
+            left:-100px;
+        }
+        #wall3{
+            top:650px;
+            width:100%;
+            height:100px;
+        }
+        #wall4{
+            width:100px;
+            height:100%;
+            left:1370px;
+        }
+        #wall5{
+            width:1400px;
+            height:99px;
+            top:150px;
+            left:-80px
+        }
+        #wall6{
+            width:30px;
+            height:100px;
+            top:10px;
+            left:100px;
+        }
+        #wall7{
+            width:30px;
+            height:100px;
+            top:60px;
+            left:200px;
+        }
+        #wall8{
+            width:30px;
+            height:100px;
+            top:10px;
+            left:300px;
+        }
+        #wall9{
+            width:30px;
+            height:100px;
+            top:60px;
+            left:400px;
+        }
+        #wall10{
+            width:30px;
+            height:100px;
+            top:10px;
+            left:500px;
+        }
+        #wall11{
+            width:30px;
+            height:100px;
+            top:60px;
+            left:600px;
+        }
+        #wall12{
+            width:30px;
+            height:100px;
+            top:10px;
+            left:700px;
+        }
+        #wall13{
+            width:30px;
+            height:100px;
+            top:60px;
+            left:800px;
+        }
+        #wall14{
+            width:30px;
+            height:100px;
+            top:10px;
+            left:900px;
+        }
+        #wall15{
+            width:1320px;
+            height:460px;
+            top:245px;
+            left:0px;
+        }
+        #circle{
+            position: fixed;
+            height:30px;
+            width:30px;
+            background-color:rgb(1, 167, 89);
+            top:0px;
+            border-radius:20%;
+            background-image: url("guy.jpg");
+            background-size:100%;
+        }
+        #end{
+            position: fixed;
+            background-color:black;
+            height:30px;
+            width:30px;
+            left:1330px; 
+            top:250px;
+            border-radius:20%;
+            background-image: url("chorni_kub.jpg");
+            background-size:100%;
+        }
+    </style> 
+    <script>   
+    var count = 0;
+     window.setInterval(
+     function () {
+        count = count + 1;
+        document.getElementById("tleft").innerHTML = count;
+     }, 1000);
+        var score = 0;
+
+        function checkCollision(elm1, elm2) {
+        var elm1Rect = elm1.getBoundingClientRect();
+        var elm2Rect = elm2.getBoundingClientRect();
+        return (elm1Rect.right >= elm2Rect.left &&
+            elm1Rect.left <= elm2Rect.right) &&
+            (elm1Rect.bottom >= elm2Rect.top &&
+            elm1Rect.top <= elm2Rect.bottom);
+        }
+
+        function move(evt) {
+        var key;
+
+        var circle = document.getElementById('circle');
+        var scoreDiv = document.getElementById('score');
+        var x = parseInt(circle.style.left);
+        var y = parseInt(circle.style.top);
+
+        switch (evt.keyCode) {
+            case 37:
+            circle.style.left = `${x+-15}px`;
+            break;
+            case 39:
+            circle.style.left = `${x+15}px`;
+            break;
+            case 38:
+            circle.style.top = `${y+-15}px`;
+            break;
+            case 40:
+            circle.style.top = `${y+15}px`;
+            break;
+        }
+
+
+        setTimeout(function() {
+            if (checkCollision(wall1, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall2, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall3, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall4, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall5, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall6, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall7, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall8, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall9, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall10, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall11, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall12, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall13, circle)) {
+                respawn();
+            }
+            if (checkCollision(wall14, circle)) {
+                respawn();
+            }
+            if (checkCollision(dot, circle)) {
+                respawn();
+            }
+            if (checkCollision(newdiv, circle)) {
+                respawn();
+            }
+            if (checkCollision(end, circle)) {
+                location.href = "game lvl 5.html";
+                alert("you won!")
+            }
+            if (checkCollision(btn,circle)) {
+                open();
+            }
+        }, 150);
+        }
+        function respawn(){
+            circle.style.top = "70px";
+            circle.style.left = "10px";
+            count=0;
+        }
+
+        window.addEventListener('keydown', move);
+    </script>    
+</body>
+</html>

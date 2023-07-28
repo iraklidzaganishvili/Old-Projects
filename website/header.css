@@ -1,0 +1,36 @@
+
+body{
+    background: url(bg.png) no-repeat center center fixed;
+    background-size: cover;
+}
+.headerdiv{
+    position: relative; 
+    text-align: center;
+    font-size: 150%;
+}
+.writings{
+    background-color: rgb(255, 255, 255, 0.7);
+    border: 0.5vh solid #bce1cf;;
+    background: hsl(150, 100%, 96%);
+    margin-bottom: 0px;
+}
+.btn-primary{
+    border-color: gray;
+    background-color: gray;
+    border-radius: 0px;
+}
+.row{
+    position: relative;
+    right: -15px;
+    width:100%
+}
+.btn-primary:hover{
+    background-color: rgb(68, 68, 68);
+    border-color: rgb(68, 68, 68);
+}
+.alert{
+    margin:0px;
+}
+img{
+    width: 0px;
+  }

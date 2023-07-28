@@ -1,0 +1,27 @@
+.writings-title{
+    width:100%;
+}
+#p1p{
+    position: relative;
+    margin:0px;
+    top:0%;
+}
+#p1{
+    margin-top:5vh;
+}
+/* .arrow{
+    position: relative;
+    margin: 0px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    left:42vw;
+    width: 5vh;
+    height: 5vh;
+    top:-5vh;
+}
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+} */

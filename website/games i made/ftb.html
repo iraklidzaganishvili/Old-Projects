@@ -1,0 +1,325 @@
+<html>
+<head>
+</head>
+<body>
+    <style>
+        *{
+            margin:0px;
+        }
+        img{
+          width: 0px;
+          height: 0px;
+        }
+        #table{
+            position:relative;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%);
+            width: 40%;
+            height: 40%;
+            font-size: 100%;
+        }
+        #money{
+          position: fixed;
+          right:0%;
+          background-color:rebeccapurple;
+          width: 10%;
+          text-align: center;
+        }
+        #shop{
+          position: relative;
+          background-color:royalblue;
+          position:fixed;
+          width: 30%;
+          height: 100%;
+          font-size: 40%;
+          overflow-y: auto;
+        }
+        #shop button{
+          width: 70%;
+          position: relative;
+          font-size: 100%;
+          left: 50%;
+          transform: translate(-50%);
+          margin-bottom: 5%;
+        }
+        #shop p{
+          position:relative;
+          text-align: center;
+        }
+        .buy{
+          position: relative;
+          top:10%;
+          background-color: seagreen;
+        }
+        .buy2{
+          position: relative;
+          top:10%;
+        }
+        #help{
+          position: fixed;
+          width: 10%;
+          text-align: center;
+          bottom: 0%;
+          right: 0%;
+          border-radius: 0px;
+        }
+        #timer{
+          position:fixed;
+          font-size: 100%;
+          background-color:royalblue;
+          z-index: 999;
+          text-align: center;
+          top:10%;
+        }
+        .disclaimer{
+          position: relative;
+          width: 0px;
+          height: 0px;
+          left:-100px;
+        }
+        #ShopTag{
+          position: relative;
+          text-align: center;
+          top: 0%;
+          font-size: 400%;
+        }
+        #last{
+          position: relative;
+          top: 100%;
+          z-index: 999;
+        }
+        #field{
+          position: relative;
+          width: 60%;
+          height: 100%;
+          font-size: 0;
+          left: 30%;
+        }
+        #field > div{
+            font-size: 1rem;
+            display: inline-block;
+            width: 10%;
+            height: 10%;
+            box-sizing: border-box;
+            background-color: 212121;
+            user-select: none;
+            color:#212121;
+            text-align: center;
+        }
+    </style>
+    <button id= "help" onclick="alert('Clik blue squares, gain coins, buy stuff in the shop, click blue squares faster... also square health increases over time. good luck :D'); this.remove()">help</button>
+    <div id= "money">
+    <p id="gold">gold: 0</p>
+    </div>
+
+    <div id="shop">
+      <h1 id="ShopTag">shop</h1>
+      <p id= "timer">0</p>
+      <div class="buy">
+        <p>gamer clicks</p> 
+        <p id = "Buy1Helper">1 shot your box every 10 boxes</p>
+        <button id="buy1" onclick="buy1()">buy for 10 gold (0/3)</button>
+      </div>
+      <div class="buy2">
+        <p>big brain</p>
+        <p>1 more gold per click</p>
+        <button id="buy2" onclick="buy2()">buy for 10 gold (0)</button>
+      </div>
+      <div class="buy">
+        <p>break that block</p>
+        <p>blocks spawn with 1 less health</p>
+          <button id= "buy3" onclick="buy3()">buy for 10 gold (0)</button>
+      </div>
+      <div class="buy2">
+        <p>finger pushups</p>
+        <p>deal +1 damage</p>
+          <button id= "buy4" onclick="buy4()">buy for 100 gold (0)</button>
+      </div>
+      <div class="buy">
+        <p>black magic</p>
+        <p id="Buy5Helper">gain gold every 5 second(s)</p>
+          <button id= "buy5" onclick="buy5()">buy for 50 gold (0/5)</button>
+      </div>
+    </div>
+    <div id="field"></div>
+    <script>
+        var main = 0;
+        var Ggain = 0;
+        var work1 = 0;
+        var price1 = 10;
+        var bght1 = 0;
+        var price2 = 10;
+        var bght2 = 0;
+        var price3 = 10;
+        var bght3 = 0;
+        var price4 = 100;
+        var bght4 = 0;
+        var price5 = 50;
+        var bght5 = 0;
+        var gold = 0;
+        var x = 10;
+        var dmg = 1;
+        var rnum = 0;
+        var time = 0;
+        var val = 2;
+        var blocknum = 1;
+        var oneblock = 0;
+        var spawnspeed = 0;
+        var field = document.getElementById('field');
+        for(var i = 0; i < 100; i++){
+          main = field.appendChild(document.createElement('div'));
+          main.setAttribute("id", "sp"+i);
+          main.setAttribute("onClick", "TrueOrFalse(this.id)");
+        }
+        let text;
+        let person = prompt("Please enter the difficulty (1-10):", "");
+        if (person == null || person == "" || person > 10 || person < 1) {
+          alert ("something went wrong");
+          window.location.reload();
+        }
+        person = 11 - person;
+        spawnspeed = person/2;
+        function NumThing(){
+          for(var i = 0; i < 100; i++){
+            rnum2 = Math.floor((Math.random() * x)+1);
+            document.getElementById("sp"+i).innerHTML = rnum2;
+          }
+        }
+        NumThing();
+        rnum =  Math.floor((Math.random() * 100));
+        document.getElementById("sp" + rnum).style.backgroundColor = "blue";
+        setInterval(function(){
+          rnum =  Math.floor((Math.random() * 100));
+          oneblock = rnum;
+          for(i = 0; i < 10000; i++){
+            if(document.getElementById("sp" + oneblock).style.backgroundColor == "blue"){
+              oneblock = Math.floor(Math.random() * 100); 
+            }else{
+              blocknum++;
+              console.log(blocknum);
+              document.getElementById("sp" + oneblock).style.backgroundColor = "blue";
+              break;
+            }
+          }
+          if(blocknum > 99){
+            alert("you lose!" + "\r\n" + "time survived " + time);
+            window.location.reload();
+          }
+        }, 1000*spawnspeed);
+        function TrueOrFalse(ThisThing){
+          if(document.getElementById(ThisThing).style.backgroundColor == "blue"){
+            val = document.getElementById(ThisThing).innerHTML;
+            gold = gold + Ggain + dmg;
+            document.getElementById(ThisThing).innerHTML = val - dmg;
+            val = val - dmg;
+            if(val <= 0){
+              newblock(ThisThing);
+            }
+          }else{
+            ItsFalse();
+            }
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+          }
+
+          function newblock(ThisThing){
+            blocknum--;
+            document.getElementById(ThisThing).style.backgroundColor = "212121";
+              rnum2 =  Math.floor((Math.random() * x)+1-bght3);
+              if(rnum2 <= 0){
+                rnum2 = 1;
+              }
+              document.getElementById(ThisThing).innerHTML = rnum2;
+              Work1Func();
+          }   
+          function ItsFalse(){
+            alert("misclick! you lose your gold.");
+            document.getElementById("gold").innerHTML = 0;
+            gold = 0;
+          }
+
+          setInterval(function(){ 
+            x++;
+          }, person*1000);
+          setInterval(function(){
+          time++;
+          if(time%(6-bght5) == 0 && bght5>0){
+            gold++;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+          }
+          document.getElementById("timer").innerHTML = "time survived: " + time;
+          }, 1000);
+        
+        function buy1(){
+          if(bght1>=3){
+             alert ("its 3/3 you cant buy more");
+             return;
+            }
+          if(gold >= price1){
+            gold = gold - price1;
+            price1 = price1*10;
+            bght1 ++;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+            document.getElementById("buy1").innerHTML = "buy for " + price1 + "gold ("+ bght1 + "/3)";
+            document.getElementById("Buy1Helper").innerHTML = "1 shot your box every " + (11 - bght1) + " boxes";
+          }
+        }
+        function Work1Func(){
+          if(bght1 == 0){
+            return;
+          }
+          work1++;
+          if (10-bght1 <= work1){
+            val = 1;
+            document.getElementById("sp"+rnum).innerHTML = val;
+            work1 = 0;
+            gold = gold + rnum - 1;
+          }
+        }
+
+        function buy2(){
+          if(gold >= price2){
+            gold = gold - price2;
+            price2 = price2+100;
+            bght2 ++;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+            document.getElementById("buy2").innerHTML = "buy for " + price2 + "gold ("+ bght2 + ")";
+            Ggain ++;
+          }
+        }
+        function buy3(){
+          if(gold >= price3){
+            gold = gold - price3;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+            price3 = price3+10;
+            bght3 ++;
+            document.getElementById("buy3").innerHTML = "buy for " + price3 + "gold ("+ bght3 + ")";
+          }
+        }
+        function buy4(){
+          if(gold >= price4){
+            gold = gold - price4;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+            price4 = price4*2;
+            bght4 ++;
+            dmg ++;  
+            document.getElementById("buy4").innerHTML = "buy for " + price4 + "gold ("+ bght4 + ")";
+          }
+        }
+        function buy5(){
+          if(bght5>=5){
+             alert ("its 5/5 you cant buy more");
+             return;
+            }
+          if(gold >= price5){
+            gold = gold - price5;
+            document.getElementById("gold").innerHTML = "gold: " + gold;
+            price5 = price5*3;
+            bght5 ++;
+            document.getElementById("buy5").innerHTML = "buy for " + price5 + "gold ("+ bght5 + "/5)";
+            document.getElementById("Buy5Helper").innerHTML = "gain gold every " + (6-bght5) + " second(s)";
+          }
+        }
+    </script>    
+</body>
+</html>
